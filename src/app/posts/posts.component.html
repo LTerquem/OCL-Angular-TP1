@@ -1,0 +1,13 @@
+<li [ngClass]="{
+	'list-group-item':true,
+	'list-group-item-success': post.loveIts > 0,
+	'list-group-item-danger': post.loveIts < 0} ">
+	<h3> {{ post.title }}</h3>
+	<em> Créé le {{ post.createdAt | date : "dd MMMM y', à 'hh'h'mm" }}</em>
+	<p> {{ post.contents }} </p>
+	<button class="btn btn-success" style="margin-right: 20px;" (click)="onLike()">I love it ! :)</button>
+	<button class="btn btn-danger" (click)="onDislike()">I don't like it :(</button>
+	<h6 *ngIf="post.loveIts>0"> {{ post.loveIts }} personne(s) aime(nt) cet article !</h6>
+	<h6 *ngIf="post.loveIts<0"> {{ - post.loveIts }} personne(s) trouve(nt) que cet article est mauvais.</h6>
+	<h6 *ngIf="post.loveIts===0"> Personne n'a encore donné son avis sur cet article ! (ou bien, les avis sont neutres)</h6>
+</li>
